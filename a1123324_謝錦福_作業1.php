@@ -23,9 +23,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     ('$name','$email','$phone','$level','$interest','$note')";
 
     if ($conn->query($sql)) {
-        $message = "🎉 報名成功！";
+        $message = "報名成功！";
     } else {
-        $message = "❌ 錯誤：" . $conn->error;
+        $message = "錯誤：" . $conn->error;
     }
 }
 ?>
@@ -38,17 +38,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <style>
 body {
-    background: linear-gradient(to right, #1e3c72, #2a5298);
+    background-color: white;
     font-family: "微軟正黑體";
-    color: white;
+    color: black;
+    margin: 0;
+    padding: 0;
 }
 
 .container {
     width: 700px;
     margin: 30px auto;
-    background: rgba(255,255,255,0.1);
+    background-color: #f9f9f9;
     padding: 30px;
-    border-radius: 15px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
 }
 
 h1, h2, h3 {
@@ -60,7 +63,8 @@ input, select, textarea {
     padding: 8px;
     margin-top: 5px;
     border-radius: 5px;
-    border: none;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
 }
 
 textarea {
@@ -69,7 +73,7 @@ textarea {
 
 button {
     padding: 10px;
-    background: #00c6ff;
+    background: black;
     border: none;
     color: white;
     width: 100%;
@@ -79,7 +83,7 @@ button {
 
 .success {
     text-align:center;
-    color: yellow;
+    color: green;
     font-weight: bold;
     margin-bottom: 10px;
 }
@@ -96,6 +100,23 @@ button {
     margin-right: 15px;
     cursor: pointer;
 }
+
+/* 表格样式 */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background-color: #f0f0f0;
+}
 </style>
 </head>
 
@@ -103,28 +124,28 @@ button {
 
 <div class="container">
 
-<h1>💻 程式設計夏令營</h1>
-<h3>從0開始學會寫網站！</h3>
+<h1>程式設計夏令營</h1>
+<h3>從零開始學會網站開發</h3>
 
 <img src="https://images.unsplash.com/photo-1518770660439-4636190af475" width="100%" style="border-radius:10px;">
 
-<p>五天帶你學會 HTML、CSS、PHP 與資料庫，完成一個自己的網站專案！</p>
+<p>五天課程帶你學會 HTML、CSS、PHP 與資料庫，完成完整網站專案。</p>
 
-<h3>📅 課程內容</h3>
-<table border="1" width="100%" style="text-align:center;">
+<h3>課程內容</h3>
+<table>
 <tr><th>天數</th><th>內容</th></tr>
-<tr><td>Day1</td><td>HTML</td></tr>
-<tr><td>Day2</td><td>CSS</td></tr>
-<tr><td>Day3</td><td>PHP</td></tr>
-<tr><td>Day4</td><td>MySQL</td></tr>
-<tr><td>Day5</td><td>專案實作</td></tr>
+<tr><td>Day1</td><td>HTML 基礎</td></tr>
+<tr><td>Day2</td><td>CSS 排版與樣式</td></tr>
+<tr><td>Day3</td><td>PHP 程式設計</td></tr>
+<tr><td>Day4</td><td>MySQL 資料庫操作</td></tr>
+<tr><td>Day5</td><td>專案整合與上線</td></tr>
 </table>
 
 <hr>
 
 <?php if($message != "") echo "<div class='success'>$message</div>"; ?>
 
-<h2>📝 報名表</h2>
+<h2>報名表</h2>
 
 <form method="POST">
 
@@ -154,14 +175,14 @@ Email：
 
 <div class="form-group checkbox-group">
 <p>想學的內容：</p>
-<label><input type="checkbox" name="interest[]" value="前端"> 前端</label>
-<label><input type="checkbox" name="interest[]" value="後端"> 後端</label>
-<label><input type="checkbox" name="interest[]" value="AI"> AI</label>
+<label><input type="checkbox" name="interest[]" value="前端"> 前端網頁設計</label>
+<label><input type="checkbox" name="interest[]" value="後端"> 後端程式設計</label>
+<label><input type="checkbox" name="interest[]" value="資料庫"> 資料庫操作</label>
 </div>
 
 <div class="form-group">
 備註：
-<textarea name="note"></textarea>
+<textarea name="note" placeholder="有什麼需求或問題可以寫在這裡"></textarea>
 </div>
 
 <button type="submit">立即報名</button>
